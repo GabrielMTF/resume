@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { profile } from "@/content/profile";
 import { getSiteUrl } from "@/lib/site";
+import { themeColors, themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050505",
+  themeColor: themeColors.dark,
   width: "device-width",
   initialScale: 1,
 };
@@ -53,8 +54,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
       className={`${geistSans.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <JsonLd />
         <SiteHeader />

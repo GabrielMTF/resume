@@ -36,7 +36,7 @@ export type SkillGroup = {
 
 export const profile = {
   name: "Gabriel Mota",
-  role: "Frontend Software Engineer",
+  role: "Software Engineer",
   headline:
     "I turn complex product requirements into interfaces that feel simple, fast, and considered.",
   location: "Brasília, Brazil",

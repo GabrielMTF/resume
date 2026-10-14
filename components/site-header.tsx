@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/button-link";
 import { Container } from "@/components/container";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { profile } from "@/content/profile";
 
 export function SiteHeader() {
@@ -31,6 +32,7 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
+          <ThemeToggle />
           <ButtonLink href="#contact" size="sm">
             Contact
           </ButtonLink>

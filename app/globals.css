@@ -1,5 +1,65 @@
 @import "tailwindcss";
 
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #050505;
+}
+
+@property --foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f5f5f7;
+}
+
+@property --muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #a1a1a6;
+}
+
+@property --faint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #6e6e73;
+}
+
+@property --line {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(255, 255, 255, 0.1);
+}
+
+@property --surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #111111;
+}
+
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2997ff;
+}
+
+@property --glow-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(255, 255, 255, 0.09);
+}
+
+@property --glow-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(41, 151, 255, 0.06);
+}
+
+@property --selection {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(245, 245, 247, 0.18);
+}
+
 :root {
   --background: #050505;
   --foreground: #f5f5f7;
@@ -8,6 +68,24 @@
   --line: rgba(255, 255, 255, 0.1);
   --surface: #111111;
   --accent: #2997ff;
+  --glow-soft: rgba(255, 255, 255, 0.09);
+  --glow-accent: rgba(41, 151, 255, 0.06);
+  --selection: rgba(245, 245, 247, 0.18);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --background: #f3efe8;
+  --foreground: #3f3a35;
+  --muted: #655f58;
+  --faint: #726c65;
+  --line: rgba(63, 52, 40, 0.12);
+  --surface: #faf7f2;
+  --accent: #5d6f78;
+  --glow-soft: rgba(255, 248, 238, 0.55);
+  --glow-accent: rgba(176, 146, 108, 0.14);
+  --selection: rgba(63, 58, 53, 0.14);
+  color-scheme: light;
 }
 
 @theme inline {
@@ -23,7 +101,16 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition {
+    transition-property:
+      --background, --foreground, --muted, --faint, --line, --surface, --accent,
+      --glow-soft, --glow-accent, --selection;
+    transition-duration: 700ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -39,22 +126,14 @@ body {
 }
 
 ::selection {
-  background: rgba(245, 245, 247, 0.18);
+  background: var(--selection);
   color: var(--foreground);
 }
 
 .hero-glow {
   background:
-    radial-gradient(
-      70% 45% at 50% 8%,
-      rgba(255, 255, 255, 0.09),
-      transparent 58%
-    ),
-    radial-gradient(
-      40% 30% at 80% 90%,
-      rgba(41, 151, 255, 0.06),
-      transparent 70%
-    );
+    radial-gradient(70% 45% at 50% 8%, var(--glow-soft), transparent 58%),
+    radial-gradient(40% 30% at 80% 90%, var(--glow-accent), transparent 70%);
 }
 
 .hero-enter {
