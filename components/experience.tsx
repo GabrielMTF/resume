@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
+import { RichText } from "@/components/rich-text";
 import { profile } from "@/content/profile";
 
 export function Experience() {
@@ -23,16 +24,19 @@ export function Experience() {
                     {job.company}
                   </h3>
                   <p className="mt-1 text-[15px] text-muted">{job.role}</p>
-                  <p className="mt-4 text-[13px] text-faint">
-                    <time dateTime={job.startIso}>{job.start}</time>
-                    {" — "}
-                    {job.endIso ? (
-                      <time dateTime={job.endIso}>{job.end}</time>
-                    ) : (
-                      job.end
-                    )}
+                  <p className="mt-4 flex flex-wrap items-baseline gap-x-2 text-[13px] text-faint">
+                    <span>
+                      <time dateTime={job.startIso}>{job.start}</time>
+                      {" — "}
+                      {job.endIso ? (
+                        <time dateTime={job.endIso}>{job.end}</time>
+                      ) : (
+                        job.end
+                      )}
+                    </span>
+                    <span aria-hidden>·</span>
+                    <span>{job.location}</span>
                   </p>
-                  <p className="mt-1 text-[13px] text-faint">{job.location}</p>
                 </header>
                 <div>
                   <ul className="space-y-3">
@@ -41,7 +45,7 @@ export function Experience() {
                         key={item}
                         className="text-[15px] leading-7 text-muted"
                       >
-                        {item}
+                        <RichText text={item} />
                       </li>
                     ))}
                   </ul>

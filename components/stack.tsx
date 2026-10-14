@@ -19,7 +19,7 @@ export function Stack() {
             <h3 className="text-[13px] tracking-[0.18em] text-faint uppercase">
               {group.title}
             </h3>
-            <ul className="mt-5 space-y-2.5">
+            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 sm:flex-col sm:gap-2.5">
               {group.items.map((item) => (
                 <li
                   key={item}
@@ -53,7 +53,7 @@ export function Stack() {
             <h3 className="text-[13px] tracking-[0.18em] text-faint uppercase">
               Languages
             </h3>
-            <ul className="mt-5 space-y-2">
+            <ul className="mt-5 flex flex-col gap-3 min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:gap-x-8">
               {profile.languages.map((language) => (
                 <li key={language.name} className="text-[17px] text-foreground">
                   {language.name}

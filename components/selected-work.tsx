@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
+import { RichText } from "@/components/rich-text";
 import { profile } from "@/content/profile";
 
 export function SelectedWork() {
@@ -26,7 +27,7 @@ export function SelectedWork() {
                 </h3>
                 <p className="mt-2 text-[13px] text-muted">{item.kicker}</p>
                 <p className="mt-5 flex-1 text-[15px] leading-7 text-muted">
-                  {item.description}
+                  <RichText text={item.description} />
                 </p>
                 <ul className="mt-8 flex flex-wrap gap-2">
                   {item.tags.map((tag) => (
